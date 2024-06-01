@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9550e77-eb4a-4eba-869a-f70d4c7b5bb8" name="Changes" comment="ура">
+      <change afterPath="$PROJECT_DIR$/src/main/java/backend/CalculatedData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Methods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/math/Methods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Options.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/math/Options.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/math/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/math/Methods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/math/Methods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/runnable/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runnable/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/runnable/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runnable/MainController.java" afterDir="false" />
     </list>
@@ -26,6 +25,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectId" id="2h23awcqZlZE3vvn4ZCXO4YBE0x" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -48,6 +48,19 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="runnable.Main" />
+      <module name="comp-math-lab-5-gui" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="runnable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="bolshe ne ono" />
       <method v="2">
@@ -61,6 +74,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -89,6 +107,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ура" />
     <option name="LAST_COMMIT_MESSAGE" value="ура" />
@@ -98,17 +127,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/backend/math/Methods.java</url>
-          <line>59</line>
+          <line>82</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/backend/math/Methods.java</url>
-          <line>123</line>
+          <line>146</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/backend/math/Methods.java</url>
-          <line>126</line>
+          <line>149</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

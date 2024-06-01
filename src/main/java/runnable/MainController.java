@@ -1,6 +1,7 @@
 package runnable;
 
 import backend.DataInput;
+import backend.math.Methods;
 import backend.math.Options;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,12 +11,13 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
-import static backend.math.Methods.getNameByNumber;
-import static backend.math.Methods.getOptionByNumber;
 import static backend.Utils.showAlert;
+import static backend.math.Methods.*;
 import static java.util.Objects.isNull;
+import static runnable.Main.*;
 
 public class MainController implements Initializable {
     @FXML
@@ -41,12 +43,14 @@ public class MainController implements Initializable {
             double[] y = result[1];
             double point = dataInput.getPoint();
 
-            drawLine(1, result);
-            drawLine(2, result);
-            drawLine(3, result);
-            drawLine(4, result);
+
+            newtonForwardsData.setArray(getTable(x.length, y));
+            newtonBackwardsData.setArray(getTable(x.length, y));
 
             for(int i = 1; i <= 4; i++) {
+                drawLine(i, result);
+                getDataByNumber(i).setXy(new double[]{point, getOptionByNumber(i).getPolynomialSum(point, x, y)});
+                System.out.println(getDataByNumber(i).toString());
                 System.out.println(getNameByNumber(i) + " : " + getOptionByNumber(i).getPolynomialSum(point, x, y));
             }
         } else {
@@ -128,5 +132,8 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("meow");
+        textFieldZero.setText("0.47");
+        textFieldOne.setText("0.1 0.2 0.3 0.4 0.5");
+        textFieldTwo.setText("1.25 2.38 3.79 5.44 7.14");
     }
 }

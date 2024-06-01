@@ -1,5 +1,6 @@
 package runnable;
 
+import backend.CalculatedData.*;
 import backend.math.Methods.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,10 @@ public class Main extends Application {
     public static NewtonPolynomialWithEquidistantPointsForwards newtonPolynomialWithEquidistantPointsForwards = new NewtonPolynomialWithEquidistantPointsForwards();
     public static NewtonPolynomialWithEquidistantPointsBackwards newtonPolynomialWithEquidistantPointsBackwards = new NewtonPolynomialWithEquidistantPointsBackwards();
 
+    public static LagrangeData lagrangeData = new LagrangeData();
+    public static NewtonData newtonData = new NewtonData();
+    public static NewtonForwardsData newtonForwardsData = new NewtonForwardsData();
+    public static NewtonBackwardsData newtonBackwardsData = new NewtonBackwardsData();
 
     @Override
     public void start(Stage stage) throws IOException {

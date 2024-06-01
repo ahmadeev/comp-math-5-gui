@@ -1,5 +1,7 @@
 package backend.math;
 
+import backend.CalculatedData;
+
 import static backend.Utils.*;
 import static runnable.Main.*;
 
@@ -21,6 +23,27 @@ public class Methods {
             }
             default: {
                 exit("че-то с выбором функций блин", 1);
+                return null;
+            }
+        }
+    }
+
+    public static CalculatedData getDataByNumber(int number) {
+        switch (number) {
+            case 1: {
+                return lagrangeData;
+            }
+            case 2: {
+                return newtonData;
+            }
+            case 3: {
+                return newtonForwardsData;
+            }
+            case 4: {
+                return newtonBackwardsData;
+            }
+            default: {
+                exit("че-то с выбором функций блинб", 1);
                 return null;
             }
         }
