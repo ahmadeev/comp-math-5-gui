@@ -102,26 +102,7 @@ public class Methods {
             int size = x.length;
 
             //  массив неразделенных сумм (по количеству узлов)
-            double[][] array = new double[size][];
-
-            //  создание и заполнение первого уровня значениями из таблицы
-            array[0] = new double[size];
-            for(int i = 0; i < size; i++) {
-                array[0][i] = y[i];
-            }
-
-            //  создание остальных уровней
-            for(int i = 1; i < size; i++) {
-                array[i] = new double[size - i];
-            }
-
-            //  заполнение остальных уровней
-            for(int i = 1; i < size; i++) {
-                for(int j = 0; j < array[i].length; j++) {
-                    array[i][j] = (array[i-1][j+1] - array[i-1][j]) / (x[i+j] - x[j]);
-
-                }
-            }
+            double[][] array = newtonData.getArray();
 
 /*            System.out.println();
 
@@ -153,6 +134,31 @@ public class Methods {
         }
     }
 
+    public static double[][] getTable(int size, double[] x, double[] y) {
+        double[][] array = new double[size][];
+
+        //  создание и заполнение первого уровня значениями из таблицы
+        array[0] = new double[size];
+        for(int i = 0; i < size; i++) {
+            array[0][i] = y[i];
+        }
+
+        //  создание остальных уровней
+        for(int i = 1; i < size; i++) {
+            array[i] = new double[size - i];
+        }
+
+        //  заполнение остальных уровней
+        for(int i = 1; i < size; i++) {
+            for(int j = 0; j < array[i].length; j++) {
+                array[i][j] = (array[i-1][j+1] - array[i-1][j]) / (x[i+j] - x[j]);
+
+            }
+        }
+        newtonData.setArray(array);
+        return array;
+    }
+
     public static class NewtonPolynomialWithEquidistantPointsForwards extends Options {
         public double getPolynomialSum(double variableX, double[] x, double[] y) {
             int size = x.length;
@@ -160,7 +166,7 @@ public class Methods {
             double t = (variableX - x[0]) / step;
 
             //  массив неразделенных сумм (по количеству узлов)
-            double[][] array = getTable(size, y);
+            double[][] array = newtonForwardsData.getArray();
 
             //  вычисление значения полинома в точке
             double result = 0;
@@ -187,7 +193,7 @@ public class Methods {
             double t = (variableX - x[size - 1]) / step;
 
             //  массив неразделенных сумм (по количеству узлов)
-            double[][] array = getTable(size, y);
+            double[][] array = newtonBackwardsData.getArray();
 
             //  вычисление значения полинома в точке
             double result = 0;
@@ -228,6 +234,9 @@ public class Methods {
                 array[i][j] = array[i-1][j+1] - array[i-1][j];
             }
         }
+
+        newtonForwardsData.setArray(array);
+        newtonBackwardsData.setArray(array);
 
         return array;
     }

@@ -43,9 +43,8 @@ public class MainController implements Initializable {
             double[] y = result[1];
             double point = dataInput.getPoint();
 
-
-            newtonForwardsData.setArray(getTable(x.length, y));
-            newtonBackwardsData.setArray(getTable(x.length, y));
+            getTable(x.length, x, y);
+            getTable(x.length, y);
 
             for(int i = 1; i <= 4; i++) {
                 drawLine(i, result);
@@ -53,6 +52,7 @@ public class MainController implements Initializable {
                 System.out.println(getDataByNumber(i).toString());
                 System.out.println(getNameByNumber(i) + " : " + getOptionByNumber(i).getPolynomialSum(point, x, y));
             }
+            System.out.println();
         } else {
             showAlert(Alert.AlertType.ERROR, "Ошибка!", "Введены некорректные данные!");
             //textFieldOne.setText("");
