@@ -1,8 +1,6 @@
-package backend;
+package backend.math;
 
-import java.util.Arrays;
-
-import static backend.math.Utils.*;
+import static backend.Utils.*;
 import static runnable.Main.*;
 
 public class Methods {
@@ -20,6 +18,27 @@ public class Methods {
             }
             case 4: {
                 return newtonPolynomialWithEquidistantPointsBackwards;
+            }
+            default: {
+                exit("че-то с выбором функций блин", 1);
+                return null;
+            }
+        }
+    }
+
+    public static String getNameByNumber(int number) {
+        switch (number) {
+            case 1: {
+                return "Лагранж";
+            }
+            case 2: {
+                return "Ньютон";
+            }
+            case 3: {
+                return "Ньютон (равнуд. узлы; вперед)";
+            }
+            case 4: {
+                return "Ньютон (равнуд. узлы; назад)";
             }
             default: {
                 exit("че-то с выбором функций блин", 1);
@@ -77,6 +96,7 @@ public class Methods {
             for(int i = 1; i < size; i++) {
                 for(int j = 0; j < array[i].length; j++) {
                     array[i][j] = (array[i-1][j+1] - array[i-1][j]) / (x[i+j] - x[j]);
+
                 }
             }
 

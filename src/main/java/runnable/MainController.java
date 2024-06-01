@@ -1,7 +1,7 @@
 package runnable;
 
 import backend.DataInput;
-import backend.Options;
+import backend.math.Options;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,8 +12,9 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static backend.Methods.getOptionByNumber;
-import static backend.math.Utils.showAlert;
+import static backend.math.Methods.getNameByNumber;
+import static backend.math.Methods.getOptionByNumber;
+import static backend.Utils.showAlert;
 import static java.util.Objects.isNull;
 
 public class MainController implements Initializable {
@@ -46,7 +47,7 @@ public class MainController implements Initializable {
             drawLine(4, result);
 
             for(int i = 1; i <= 4; i++) {
-                System.out.println(getOptionByNumber(i).getPolynomialSum(point, x, y));
+                System.out.println(getNameByNumber(i) + " : " + getOptionByNumber(i).getPolynomialSum(point, x, y));
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Ошибка!", "Введены некорректные данные!");

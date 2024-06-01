@@ -1,6 +1,6 @@
 package runnable;
 
-import backend.Methods.*;
+import backend.math.Methods.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

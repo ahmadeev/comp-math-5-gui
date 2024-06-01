@@ -1,4 +1,4 @@
-package backend.math;
+package backend;
 
 import javafx.scene.control.Alert;
 
