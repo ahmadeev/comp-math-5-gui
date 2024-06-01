@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import static backend.Utils.exit;
 import static backend.Utils.showAlert;
 import static backend.math.Methods.*;
 import static java.util.Objects.isNull;
@@ -28,6 +29,10 @@ public class MainController implements Initializable {
     private TextField textFieldTwo;
     @FXML
     private Button submitButton;
+    @FXML
+    private Button deltaFButton;
+    @FXML
+    private Button approximationButton;
     @FXML
     private LineChart<Number, Number> plot;
 
@@ -90,6 +95,43 @@ public class MainController implements Initializable {
         }
 
         return new DataInput(new double[][]{x, y}, point);
+    }
+
+    @FXML
+    protected void handleGetDeltaFButton(ActionEvent event) {
+        if (event.getSource() != deltaFButton) exit("че-то с кнопкой для разностей", 1);
+
+        if (isNull(getDataByNumber(2).getArray())) {
+            showAlert(Alert.AlertType.ERROR, "Ошибка", "Сначала введите точки x и y!");
+        } else {
+            StringBuilder content = new StringBuilder();
+            content.append(getNameByNumber(2)).append(":\n\n");
+            for(double[] i : newtonData.getArray()) {
+                content.append(Arrays.toString(i)).append("\n");
+            }
+            content.append("\n").append(getNameByNumber(3)).append(" и ").append(getNameByNumber(4)).append(":\n\n");
+            for(double[] i : newtonForwardsData.getArray()) {
+                content.append(Arrays.toString(i)).append("\n");
+            }
+            showAlert(Alert.AlertType.INFORMATION, "Разности", content.toString());
+        }
+    }
+
+    @FXML
+    protected void handleGetApproximationButton(ActionEvent event) {
+        if (event.getSource() != approximationButton) exit("че-то с кнопкой для разностей", 1);
+
+        if (isNull(getDataByNumber(1).getXy())) {
+            showAlert(Alert.AlertType.ERROR, "Ошибка", "Сначала введите точки x и y!");
+        } else {
+            StringBuilder content = new StringBuilder();
+            content.append("Вычисленные приближения:").append("\n\n");
+            for(int i = 1; i <= 4; i++) {
+                content.append(getNameByNumber(i)).append(": ");
+                content.append(Arrays.toString(getDataByNumber(i).getXy())).append("\n");
+            }
+            showAlert(Alert.AlertType.INFORMATION, "Приближения", content.toString());
+        }
     }
 
     private void drawLine(int number, double[][] xy) {

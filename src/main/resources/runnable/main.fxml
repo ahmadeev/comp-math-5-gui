@@ -13,15 +13,17 @@
 
   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="720" prefWidth="720">
 
-    <Button fx:id="submitButton" layoutX="292.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSubmitEvent" text="submit" />
+    <Button fx:id="submitButton" layoutX="342.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSubmitEvent" text="submit" />
     <TextField fx:id="textFieldOne" layoutX="244.0" layoutY="272.0" />
     <TextField fx:id="textFieldTwo" layoutX="245.0" layoutY="317.0" />
-      <Label layoutX="239.0" layoutY="237.0" text="Введите точки функции через пробел:" />
+      <Label layoutX="208.0" layoutY="237.0" text="Введите точки функции через пробел:" />
       <Label layoutX="216.0" layoutY="276.0" text="x:" />
       <Label layoutX="216.0" layoutY="321.0" text="y:" />
 
     <TextField fx:id="textFieldZero" layoutX="239.0" layoutY="195.0" prefHeight="26.0" prefWidth="150.0" />
     <Label layoutX="242.0" layoutY="161.0" text="Введите точку для поиска:" />
+      <Button fx:id="deltaFButton" layoutX="245.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleGetDeltaFButton" text="Δf_(k)" />
+      <Button fx:id="approximationButton" layoutX="300.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleGetApproximationButton" text="xy" />
 
   </AnchorPane>
 
