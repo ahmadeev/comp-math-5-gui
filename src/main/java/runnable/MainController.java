@@ -1,5 +1,6 @@
 package runnable;
 
+import backend.CalculatedData;
 import backend.DataInput;
 import backend.math.Methods;
 import backend.math.Options;
@@ -38,6 +39,10 @@ public class MainController implements Initializable {
 
     @FXML
     protected void handleSubmitEvent(ActionEvent event) {
+        lagrangeData = new CalculatedData.LagrangeData();
+        newtonData = new CalculatedData.NewtonData();
+        newtonForwardsData = new CalculatedData.NewtonForwardsData();
+        newtonBackwardsData = new CalculatedData.NewtonBackwardsData();
 
         plot.getData().clear();
 
@@ -48,15 +53,43 @@ public class MainController implements Initializable {
             double[] y = result[1];
             double point = dataInput.getPoint();
 
-            getTable(x.length, x, y);
-            getTable(x.length, y);
+            int size = x.length;
 
-            for(int i = 1; i <= 4; i++) {
+            boolean flag = true;
+            double previousStep = x[1] - x[0];
+            double step;
+            for(int i = 2; i < size; i++) {
+                step = x[i] - x[i-1];
+                if (Math.abs(step - previousStep) > 1e-8) {
+                    flag = false;
+                    break;
+                }
+                previousStep = step;
+            }
+
+            drawLine(1, result);
+            getDataByNumber(1).setXy(new double[]{point, getOptionByNumber(1).getPolynomialSum(point, x, y)});
+            if (flag) {
+                //  равноотстоящие
+                getTable(size, y);
+                drawLine(3, result);
+                getDataByNumber(3).setXy(new double[]{point, getOptionByNumber(3).getPolynomialSum(point, x, y)});
+                drawLine(4, result);
+                getDataByNumber(4).setXy(new double[]{point, getOptionByNumber(4).getPolynomialSum(point, x, y)});
+            } else {
+                //  неравноотстоящие
+                getTable(size, x, y);
+                drawLine(2, result);
+                getDataByNumber(2).setXy(new double[]{point, getOptionByNumber(2).getPolynomialSum(point, x, y)});
+            }
+
+/*            for(int i = 1; i <= 4; i++) {
                 drawLine(i, result);
                 getDataByNumber(i).setXy(new double[]{point, getOptionByNumber(i).getPolynomialSum(point, x, y)});
                 System.out.println(getDataByNumber(i).toString());
                 System.out.println(getNameByNumber(i) + " : " + getOptionByNumber(i).getPolynomialSum(point, x, y));
-            }
+            }*/
+
             System.out.println();
         } else {
             showAlert(Alert.AlertType.ERROR, "Ошибка!", "Введены некорректные данные!");
@@ -101,18 +134,25 @@ public class MainController implements Initializable {
     protected void handleGetDeltaFButton(ActionEvent event) {
         if (event.getSource() != deltaFButton) exit("че-то с кнопкой для разностей", 1);
 
-        if (isNull(getDataByNumber(2).getArray())) {
+        if (isNull(getDataByNumber(2).getArray()) && isNull(getDataByNumber(3).getArray()) && isNull(getDataByNumber(4).getArray())) {
             showAlert(Alert.AlertType.ERROR, "Ошибка", "Сначала введите точки x и y!");
         } else {
             StringBuilder content = new StringBuilder();
-            content.append(getNameByNumber(2)).append(":\n\n");
-            for(double[] i : newtonData.getArray()) {
-                content.append(Arrays.toString(i)).append("\n");
+            if (!isNull(newtonData.getArray())) {
+                content.append(getNameByNumber(2)).append(":\n\n");
+                for(double[] i : newtonData.getArray()) {
+                    content.append(Arrays.toString(i)).append("\n");
+                }
+                content.append("\n");
             }
-            content.append("\n").append(getNameByNumber(3)).append(" и ").append(getNameByNumber(4)).append(":\n\n");
-            for(double[] i : newtonForwardsData.getArray()) {
-                content.append(Arrays.toString(i)).append("\n");
+
+            if (!isNull(newtonForwardsData.getArray())) {
+                content.append(getNameByNumber(3)).append(" и ").append(getNameByNumber(4)).append(":\n\n");
+                for(double[] i : newtonForwardsData.getArray()) {
+                    content.append(Arrays.toString(i)).append("\n");
+                }
             }
+
             showAlert(Alert.AlertType.INFORMATION, "Разности", content.toString());
         }
     }
@@ -127,8 +167,10 @@ public class MainController implements Initializable {
             StringBuilder content = new StringBuilder();
             content.append("Вычисленные приближения:").append("\n\n");
             for(int i = 1; i <= 4; i++) {
-                content.append(getNameByNumber(i)).append(": ");
-                content.append(Arrays.toString(getDataByNumber(i).getXy())).append("\n");
+                if (!isNull(getDataByNumber(i).getXy())) {
+                    content.append(getNameByNumber(i)).append(": ");
+                    content.append(Arrays.toString(getDataByNumber(i).getXy())).append("\n");
+                }
             }
             showAlert(Alert.AlertType.INFORMATION, "Приближения", content.toString());
         }
