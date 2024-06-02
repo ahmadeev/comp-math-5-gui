@@ -2,7 +2,6 @@ package runnable;
 
 import backend.CalculatedData;
 import backend.DataInput;
-import backend.math.Methods;
 import backend.math.Options;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,24 +64,23 @@ public class MainController implements Initializable {
                 }
                 previousStep = step;
             }
-
-            drawLine(1, result);
+            //drawDots(result);
+            drawLine(1, result, point);
             getDataByNumber(1).setXy(new double[]{point, getOptionByNumber(1).getPolynomialSum(point, x, y)});
             if (flag) {
                 //  равноотстоящие
                 getTable(size, y);
-                drawLine(3, result);
+                drawLine(3, result, point);
                 getDataByNumber(3).setXy(new double[]{point, getOptionByNumber(3).getPolynomialSum(point, x, y)});
-                drawLine(4, result);
+                drawLine(4, result, point);
                 getDataByNumber(4).setXy(new double[]{point, getOptionByNumber(4).getPolynomialSum(point, x, y)});
 
             } else {
                 //  неравноотстоящие
                 getTable(size, x, y);
-                drawLine(2, result);
+                drawLine(2, result, point);
                 getDataByNumber(2).setXy(new double[]{point, getOptionByNumber(2).getPolynomialSum(point, x, y)});
             }
-            drawDots(result);
 
             System.out.println();
         } else {
@@ -170,7 +168,7 @@ public class MainController implements Initializable {
         }
     }
 
-    private void drawDots(double[][] xy) {
+/*    private void drawDots(double[][] xy) {
         double[] x = xy[0];
         double[] y = xy[1];
 
@@ -179,18 +177,22 @@ public class MainController implements Initializable {
         for(int i = 0; i < x.length; i++) {
             series.getData().add(new XYChart.Data<>(x[i], y[i]));
         }
-        //plot.setCreateSymbols(true);
+        Platform.runLater(() -> {
+            series.getNode().setVisible(false);
+        });
+
+        plot.setCreateSymbols(true);
         //plot.setOpacity(0.5);
         plot.getData().add(series);
-    }
+    }*/
 
-    private void drawLine(int number, double[][] xy) {
+    private void drawLine(int number, double[][] xy, double point) {
         double[] x = xy[0];
         double[] y = xy[1];
 
         int size = x.length;
         double step = 0.01;
-        double offset = (x[size - 1] - x[0]) * 0.2;
+        double offset = (x[size - 1] - x[0]) * 0.1;
 
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
 
@@ -198,8 +200,11 @@ public class MainController implements Initializable {
             series.getData().add(new XYChart.Data<>(x[i], y[i]));
         }*/
 
-        double a = x[0] - offset;
-        double b = x[size - 1] + offset;
+        /*double a = x[0] - offset;
+        double b = x[size - 1] + offset;*/
+
+        double a = x[0] < point ? x[0] - offset : point - offset;
+        double b = x[size - 1] > point ? x[size - 1] + offset : point + offset;
 
         Options option = getOptionByNumber(number);
 
