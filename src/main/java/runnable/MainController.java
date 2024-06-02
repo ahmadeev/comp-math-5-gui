@@ -76,10 +76,6 @@ public class MainController implements Initializable {
                 drawLine(4, result);
                 getDataByNumber(4).setXy(new double[]{point, getOptionByNumber(4).getPolynomialSum(point, x, y)});
 
-                for(double[] i : newtonForwardsData.getArray()) {
-                    System.out.println(formatArrayNumbers(i));
-                }
-
             } else {
                 //  неравноотстоящие
                 getTable(size, x, y);
@@ -166,7 +162,7 @@ public class MainController implements Initializable {
             for(int i = 1; i <= 4; i++) {
                 if (!isNull(getDataByNumber(i).getXy())) {
                     content.append(getNameByNumber(i)).append(": ");
-                    content.append(Arrays.toString(getDataByNumber(i).getXy())).append("\n");
+                    content.append(formatArrayNumbers((getDataByNumber(i).getXy()), 6)).append("\n");
                 }
             }
             showAlert(Alert.AlertType.INFORMATION, "Приближения", content.toString());

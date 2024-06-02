@@ -4,6 +4,8 @@ import javafx.scene.control.Alert;
 
 import java.util.Locale;
 
+import static java.util.Objects.isNull;
+
 public class Utils {
     public static void exit(String msg, int exitCode) {
         if (!(msg.trim().equals(""))) {
@@ -20,11 +22,12 @@ public class Utils {
         alert.showAndWait();
     }
 
-    public static String formatArrayNumbers(double[] array) {
-
+    public static String formatArrayNumbers(double[] array, int decimals) {
+        if (isNull(array)) return null;
         StringBuilder result = new StringBuilder();
         for(double i : array) {
-            result.append(String.format(Locale.ROOT,"%.2f", i)).append(", ");
+            String format = "%." + decimals + "f";
+            result.append(String.format(Locale.ROOT, format, i)).append(", ");
         }
         result.deleteCharAt(result.length() - 2);
 

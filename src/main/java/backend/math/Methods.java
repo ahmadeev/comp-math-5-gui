@@ -2,6 +2,9 @@ package backend.math;
 
 import backend.CalculatedData;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import static backend.Utils.*;
 import static runnable.Main.*;
 
@@ -151,8 +154,8 @@ public class Methods {
         //  заполнение остальных уровней
         for(int i = 1; i < size; i++) {
             for(int j = 0; j < array[i].length; j++) {
-                array[i][j] = (array[i-1][j+1] - array[i-1][j]) / (x[i+j] - x[j]);
-
+                array[i][j] = (BigDecimal.valueOf(array[i-1][j+1]).subtract(BigDecimal.valueOf(array[i-1][j]))).divide(BigDecimal.valueOf(x[i+j]).subtract(BigDecimal.valueOf(x[j])), 2, RoundingMode.HALF_DOWN).doubleValue();
+                //array[i][j] = (array[i-1][j+1] - array[i-1][j]) / (x[i+j] - x[j]);
             }
         }
         newtonData.setArray(array);
@@ -231,7 +234,8 @@ public class Methods {
         //  заполнение остальных уровней
         for(int i = 1; i < size; i++) {
             for(int j = 0; j < array[i].length; j++) {
-                array[i][j] = array[i-1][j+1] - array[i-1][j];
+                array[i][j] = (BigDecimal.valueOf(array[i-1][j+1]).subtract(BigDecimal.valueOf(array[i-1][j]))).doubleValue();
+                //array[i][j] = array[i-1][j+1] - array[i-1][j];
             }
         }
 

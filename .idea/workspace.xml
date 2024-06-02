@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9550e77-eb4a-4eba-869a-f70d4c7b5bb8" name="Changes" comment="ура">
+    <list default="true" id="f9550e77-eb4a-4eba-869a-f70d4c7b5bb8" name="Changes" comment="сюда, если что">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/math/Methods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/math/Methods.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/runnable/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runnable/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717287392595</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="сюда, если что">
+      <option name="closed" value="true" />
+      <created>1717288133801</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717288133801</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,14 +161,15 @@
     <MESSAGE value="откат до этого" />
     <MESSAGE value="откат до этого - 1" />
     <MESSAGE value="ура" />
-    <option name="LAST_COMMIT_MESSAGE" value="ура" />
+    <MESSAGE value="сюда, если что" />
+    <option name="LAST_COMMIT_MESSAGE" value="сюда, если что" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/backend/math/Methods.java</url>
-          <line>82</line>
+          <line>85</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
