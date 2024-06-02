@@ -15,8 +15,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-import static backend.Utils.exit;
-import static backend.Utils.showAlert;
+import static backend.Utils.*;
 import static backend.math.Methods.*;
 import static java.util.Objects.isNull;
 import static runnable.Main.*;
@@ -76,19 +75,17 @@ public class MainController implements Initializable {
                 getDataByNumber(3).setXy(new double[]{point, getOptionByNumber(3).getPolynomialSum(point, x, y)});
                 drawLine(4, result);
                 getDataByNumber(4).setXy(new double[]{point, getOptionByNumber(4).getPolynomialSum(point, x, y)});
+
+                for(double[] i : newtonForwardsData.getArray()) {
+                    System.out.println(formatArrayNumbers(i));
+                }
+
             } else {
                 //  неравноотстоящие
                 getTable(size, x, y);
                 drawLine(2, result);
                 getDataByNumber(2).setXy(new double[]{point, getOptionByNumber(2).getPolynomialSum(point, x, y)});
             }
-
-/*            for(int i = 1; i <= 4; i++) {
-                drawLine(i, result);
-                getDataByNumber(i).setXy(new double[]{point, getOptionByNumber(i).getPolynomialSum(point, x, y)});
-                System.out.println(getDataByNumber(i).toString());
-                System.out.println(getNameByNumber(i) + " : " + getOptionByNumber(i).getPolynomialSum(point, x, y));
-            }*/
 
             System.out.println();
         } else {
