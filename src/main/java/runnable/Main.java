@@ -21,6 +21,9 @@ public class Main extends Application {
     public static NewtonForwardsData newtonForwardsData = new NewtonForwardsData();
     public static NewtonBackwardsData newtonBackwardsData = new NewtonBackwardsData();
 
+    public static GaussGreaterThanA gaussGreaterThanA = new GaussGreaterThanA();
+    public static GaussLesserThanA gaussLesserThanA = new GaussLesserThanA();
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(runnable.Main.class.getResource("main.fxml"));

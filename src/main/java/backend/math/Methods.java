@@ -4,6 +4,7 @@ import backend.CalculatedData;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 
 import static backend.Utils.*;
 import static runnable.Main.*;
@@ -176,6 +177,24 @@ public class Methods {
             for(int i = 0; i < size; i++) {
                 result += array[i][0] * getMultiple(i, t) / getFactorial(i);
             }
+
+/*            //  вычисление значения полинома в точке
+            int newAIndex = 0;
+            for (int i = 1; i < (size / 2 + 1); i++) {
+                if (variableX < x[i]) {
+                    newAIndex = i - 1;
+                    break;
+                }
+            }
+            t = (variableX - x[newAIndex]) / step;
+            double result = 0;
+            int counter = 0;
+            for(int i = newAIndex; i < size; i++) {
+                if (array[i].length < newAIndex + 1) break;
+                result += array[i][newAIndex] * getMultiple(counter, t) / getFactorial(counter);
+                counter++;
+            }*/
+
             return result;
         }
 
@@ -253,4 +272,87 @@ public class Methods {
         return result;
     }
 
+    public static class GaussGreaterThanA {
+        public static double getPolynomialSum(double variableX, double[] x, double[] y) {
+            int size = x.length;
+            double step = x[1] - x[0];
+            int index;
+            if (size % 2 == 1) {
+                index = (size - 1) / 2;
+            } else {
+                index = size / 2 - 1;
+            }
+            double[][] array = newtonForwardsData.getArray();
+            double t = (variableX - x[index]) / step;
+
+            int counter = 0;
+            double result = 0;
+            for (int i = index; i > 0; i--) {
+                double multipleOne = getMultiple(0, counter, t);
+                double coeffOne = array[counter][i];
+                counter++;
+                double multipleTwo = getMultiple(0, counter, t);
+                double coeffTwo = array[counter][i];
+                String str = String.format("%.2f * %.2f + %.2f * %.2f", coeffOne, multipleOne, coeffTwo, multipleTwo);
+                System.out.println(str);
+
+                result += coeffOne * multipleOne + coeffTwo * multipleTwo;
+                counter++;
+            }
+            result += array[counter][0] * getMultiple(0, counter, t);
+            return result;
+        }
+
+        //  номер пары слагаемых
+        private static double getMultiple(int call, int position, double t) {
+            double result = 1;
+            if (position == 0) return 1;
+            for(int i = 1; i <= position; i++) {
+                result *= (i % 2 == 0) ? (t - i / 2) : (t + (int) i / 2);
+            }
+            return result / getFactorial(position);
+        }
+    }
+
+    public static class GaussLesserThanA {
+        public static double getPolynomialSum(double variableX, double[] x, double[] y) {
+            int size = x.length;
+            double step = x[1] - x[0];
+            int index;
+            if (size % 2 == 1) {
+                index = (size - 1) / 2;
+            } else {
+                index = size / 2 - 1;
+            }
+            double[][] array = newtonForwardsData.getArray();
+            for(double[] i : array) {
+                System.out.println(Arrays.toString(i));
+            }
+            double t = (variableX - x[index]) / step;
+
+            int counter = 1;
+            double result = array[0][index];
+            for (int i = index - 1; i > 0; i--) {
+                double coeffOne = array[counter][i];
+                double multipleOne = getMultiple(1, counter, t);
+                counter++;
+                double coeffTwo = array[counter][i];
+                double multipleTwo = getMultiple(2, counter, t);
+                String str = String.format("%.2f * %.2f + %.2f * %.2f", coeffOne, multipleOne, coeffTwo, multipleTwo);
+                System.out.println(str);
+                result += coeffOne * multipleOne + coeffTwo * multipleTwo;
+                counter++;
+            }
+            return result;
+        }
+
+        //  номер пары слагаемых
+        private static double getMultiple(int call, int position, double t) {
+            double result = 1;
+            for(int i = 1; i <= position; i++) {
+                result *= (i % 2 == 0) ? (t + i / 2) : (t - (int) i / 2);
+            }
+            return result / getFactorial(position);
+        }
+    }
 }

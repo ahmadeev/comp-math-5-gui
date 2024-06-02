@@ -83,6 +83,9 @@ public class MainController implements Initializable {
             }
 
             System.out.println();
+
+            System.out.println("Гаусс 1: " + gaussGreaterThanA.getPolynomialSum(0.32, x, y));
+            System.out.println("Гаусс 2: " + gaussLesserThanA.getPolynomialSum(0.28, x, y));
         } else {
             showAlert(Alert.AlertType.ERROR, "Ошибка!", "Введены некорректные данные!");
             //textFieldOne.setText("");
