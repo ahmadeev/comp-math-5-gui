@@ -169,6 +169,11 @@ public class MainController implements Initializable {
         }
     }
 
+    private void drawDots(double[][] xy) {
+        double[] x = xy[0];
+        double[] y = xy[1];
+    }
+
     private void drawLine(int number, double[][] xy) {
         double[] x = xy[0];
         double[] y = xy[1];
