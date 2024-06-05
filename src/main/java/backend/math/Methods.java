@@ -131,8 +131,9 @@ public class Methods {
          */
         private double getMultiple(int position, double variableX, double[] x) {
             double result = 1;
+            if (position == 0) return 1;
             for(int i = 0; i < position; i++) {
-                result *= variableX - x[position - 1];
+                result *= variableX - x[i];
             }
             return result;
         }

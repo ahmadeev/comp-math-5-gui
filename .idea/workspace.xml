@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9550e77-eb4a-4eba-869a-f70d4c7b5bb8" name="Changes" comment="пупупу">
+    <list default="true" id="f9550e77-eb4a-4eba-869a-f70d4c7b5bb8" name="Changes" comment="пупупу2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/runnable/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runnable/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/math/Methods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/math/Methods.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +95,7 @@
       <workItem from="1717308004445" duration="2448000" />
       <workItem from="1717313214686" duration="435000" />
       <workItem from="1717354237427" duration="814000" />
-      <workItem from="1717596761240" duration="1186000" />
+      <workItem from="1717596761240" duration="2484000" />
     </task>
     <task id="LOCAL-00001" summary="ура">
       <option name="closed" value="true" />
@@ -177,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717597424125</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="пупупу2">
+      <option name="closed" value="true" />
+      <created>1717598190938</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1717598190938</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,25 +211,26 @@
     <MESSAGE value="чистка" />
     <MESSAGE value="O_O" />
     <MESSAGE value="пупупу" />
-    <option name="LAST_COMMIT_MESSAGE" value="пупупу" />
+    <MESSAGE value="пупупу2" />
+    <option name="LAST_COMMIT_MESSAGE" value="пупупу2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/backend/math/Methods.java</url>
-          <line>182</line>
+          <line>183</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/backend/math/Methods.java</url>
-          <line>334</line>
+          <line>335</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
-      <inline-watch fileUrl="file://$PROJECT_DIR$/src/main/java/backend/math/Methods.java" line="166">
+      <inline-watch fileUrl="file://$PROJECT_DIR$/src/main/java/backend/math/Methods.java" line="167">
         <watch expression="variableX" language="JAVA" />
       </inline-watch>
     </watches-manager>
