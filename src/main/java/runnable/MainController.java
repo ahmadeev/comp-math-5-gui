@@ -66,20 +66,24 @@ public class MainController implements Initializable {
             }
             //drawDots(result);
             drawLine(1, result, point);
-            getDataByNumber(1).setXy(new double[]{point, getOptionByNumber(1).getPolynomialSum(point, x, y)});
+            lagrangeData.setXy(new double[]{point, lagrange.getPolynomialSum(point, x, y)});
             if (flag) {
+                //newtonForwards.resetTA();
                 //  равноотстоящие
                 getTable(size, y);
+                newtonForwardsData.setXy(new double[]{point, newtonForwards.getPolynomialSum(point, x, y)});
+                newtonBackwardsData.setXy(new double[]{point, newtonBackwards.getPolynomialSum(point, x, y)});
+
                 drawLine(3, result, point);
-                getDataByNumber(3).setXy(new double[]{point, getOptionByNumber(3).getPolynomialSum(point, x, y)});
                 drawLine(4, result, point);
-                getDataByNumber(4).setXy(new double[]{point, getOptionByNumber(4).getPolynomialSum(point, x, y)});
+
+//                System.out.println(newtonForwards.getPolynomialSumTwo(0.22, x, y));
 
             } else {
                 //  неравноотстоящие
                 getTable(size, x, y);
                 drawLine(2, result, point);
-                getDataByNumber(2).setXy(new double[]{point, getOptionByNumber(2).getPolynomialSum(point, x, y)});
+                newtonData.setXy(new double[]{point, newton.getPolynomialSum(point, x, y)});
             }
 
             //System.out.println();
@@ -237,7 +241,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("meow");
-        textFieldZero.setText("0.47");
+        textFieldZero.setText("0.22");
         textFieldOne.setText("0.1 0.2 0.3 0.4 0.5");
         textFieldTwo.setText("1.25 2.38 3.79 5.44 7.14");
     }

@@ -7,6 +7,9 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 
 import static backend.Utils.*;
+import static java.lang.Double.NaN;
+import static java.lang.Double.isNaN;
+import static java.util.Objects.isNull;
 import static runnable.Main.*;
 
 public class Methods {
@@ -165,10 +168,15 @@ public class Methods {
     }
 
     public static class NewtonForwards extends Options {
-        public double getPolynomialSum(double variableX, double[] x, double[] y) {
-            int size = x.length;
+
+        private double initT(double variableX, double[] x) {
             double step = x[1] - x[0];
-            double t = (variableX - x[0]) / step;
+            return (variableX - x[0]) / step;
+        }
+
+/*        public double getPolynomialSumTwo(double variableX, double[] x, double[] y) {
+            int size = x.length;
+            double t = initT(variableX, x);
 
             //  массив неразделенных сумм (по количеству узлов)
             double[][] array = newtonForwardsData.getArray();
@@ -179,22 +187,33 @@ public class Methods {
                 result += array[i][0] * getMultiple(i, t) / getFactorial(i);
             }
 
-/*            //  вычисление значения полинома в точке
-            int newAIndex = 0;
-            for (int i = 1; i < (size / 2 + 1); i++) {
+            return result;
+        }*/
+
+        public double getPolynomialSum(double variableX, double[] x, double[] y) {
+            int size = x.length;
+
+            int firstX = 0;
+            for(int i = 1; i < size; i++) {
                 if (variableX < x[i]) {
-                    newAIndex = i - 1;
+                    firstX = i - 1;
                     break;
                 }
             }
-            t = (variableX - x[newAIndex]) / step;
+
+            size -= firstX;
+            double[] copiedX = new double[size];
+            System.arraycopy(x, firstX, copiedX, 0, size);
+            double t = initT(variableX, copiedX);
+
+            //  массив неразделенных сумм (по количеству узлов)
+            double[][] array = newtonForwardsData.getArray();
+
+            //  вычисление значения полинома в точке
             double result = 0;
-            int counter = 0;
-            for(int i = newAIndex; i < size; i++) {
-                if (array[i].length < newAIndex + 1) break;
-                result += array[i][newAIndex] * getMultiple(counter, t) / getFactorial(counter);
-                counter++;
-            }*/
+            for(int i = 0; i < size; i++) {
+                result += array[i][firstX] * getMultiple(i, t) / getFactorial(i);
+            }
 
             return result;
         }
