@@ -169,29 +169,9 @@ public class Methods {
 
     public static class NewtonForwards extends Options {
 
-        private double initT(double variableX, double[] x) {
-            double step = x[1] - x[0];
-            return (variableX - x[0]) / step;
-        }
-
-/*        public double getPolynomialSumTwo(double variableX, double[] x, double[] y) {
-            int size = x.length;
-            double t = initT(variableX, x);
-
-            //  массив неразделенных сумм (по количеству узлов)
-            double[][] array = newtonForwardsData.getArray();
-
-            //  вычисление значения полинома в точке
-            double result = 0;
-            for(int i = 0; i < size; i++) {
-                result += array[i][0] * getMultiple(i, t) / getFactorial(i);
-            }
-
-            return result;
-        }*/
-
         public double getPolynomialSum(double variableX, double[] x, double[] y) {
             int size = x.length;
+            double step = x[1] - x[0];
 
             int firstX = 0;
             for(int i = 1; i < size; i++) {
@@ -202,9 +182,7 @@ public class Methods {
             }
 
             size -= firstX;
-            double[] copiedX = new double[size];
-            System.arraycopy(x, firstX, copiedX, 0, size);
-            double t = initT(variableX, copiedX);
+            double t = (variableX - x[firstX]) / step;
 
             //  массив неразделенных сумм (по количеству узлов)
             double[][] array = newtonForwardsData.getArray();
