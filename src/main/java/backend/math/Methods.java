@@ -17,13 +17,13 @@ public class Methods {
                 return lagrange;
             }
             case 2: {
-                return newtonPolynomialWithNotEquidistantPoints;
+                return newton;
             }
             case 3: {
-                return newtonPolynomialWithEquidistantPointsForwards;
+                return newtonForwards;
             }
             case 4: {
-                return newtonPolynomialWithEquidistantPointsBackwards;
+                return newtonBackwards;
             }
             default: {
                 exit("че-то с выбором функций блин", 1);
@@ -101,7 +101,7 @@ public class Methods {
         }
     }
 
-    public static class NewtonPolynomialWithNotEquidistantPoints extends Options {
+    public static class Newton extends Options {
         public double getPolynomialSum(double variableX, double[] x, double[] y) {
             int size = x.length;
 
@@ -163,7 +163,7 @@ public class Methods {
         return array;
     }
 
-    public static class NewtonPolynomialWithEquidistantPointsForwards extends Options {
+    public static class NewtonForwards extends Options {
         public double getPolynomialSum(double variableX, double[] x, double[] y) {
             int size = x.length;
             double step = x[1] - x[0];
@@ -207,7 +207,7 @@ public class Methods {
         }
     }
 
-    public static class NewtonPolynomialWithEquidistantPointsBackwards extends Options {
+    public static class NewtonBackwards extends Options {
 
         public double getPolynomialSum(double variableX, double[] x, double[] y) {
             int size = x.length;

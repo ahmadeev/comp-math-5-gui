@@ -84,8 +84,8 @@ public class MainController implements Initializable {
 
             System.out.println();
 
-            System.out.println("Гаусс 1: " + gaussGreaterThanA.getPolynomialSum(0.32, x, y));
-            System.out.println("Гаусс 2: " + gaussLesserThanA.getPolynomialSum(0.28, x, y));
+/*            System.out.println("Гаусс 1: " + gaussGreaterThanA.getPolynomialSum(0.32, x, y));
+            System.out.println("Гаусс 2: " + gaussLesserThanA.getPolynomialSum(0.28, x, y));*/
         } else {
             showAlert(Alert.AlertType.ERROR, "Ошибка!", "Введены некорректные данные!");
             //textFieldOne.setText("");
@@ -155,6 +155,10 @@ public class MainController implements Initializable {
     @FXML
     protected void handleGetApproximationButton(ActionEvent event) {
         if (event.getSource() != approximationButton) exit("че-то с кнопкой для разностей", 1);
+
+/*        for(int i = 1; i <= 4; i++) {
+            System.out.println(Arrays.toString(getDataByNumber(i).getXy()));
+        }*/
 
         if (isNull(getDataByNumber(1).getXy())) {
             showAlert(Alert.AlertType.ERROR, "Ошибка", "Сначала введите точки x и y!");

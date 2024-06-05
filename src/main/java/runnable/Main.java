@@ -12,17 +12,17 @@ import java.io.IOException;
 public class Main extends Application {
 
     public static Lagrange lagrange = new Lagrange();
-    public static NewtonPolynomialWithNotEquidistantPoints newtonPolynomialWithNotEquidistantPoints = new NewtonPolynomialWithNotEquidistantPoints();
-    public static NewtonPolynomialWithEquidistantPointsForwards newtonPolynomialWithEquidistantPointsForwards = new NewtonPolynomialWithEquidistantPointsForwards();
-    public static NewtonPolynomialWithEquidistantPointsBackwards newtonPolynomialWithEquidistantPointsBackwards = new NewtonPolynomialWithEquidistantPointsBackwards();
+    public static Newton newton = new Newton();
+    public static NewtonForwards newtonForwards = new NewtonForwards();
+    public static NewtonBackwards newtonBackwards = new NewtonBackwards();
 
     public static LagrangeData lagrangeData = new LagrangeData();
     public static NewtonData newtonData = new NewtonData();
     public static NewtonForwardsData newtonForwardsData = new NewtonForwardsData();
     public static NewtonBackwardsData newtonBackwardsData = new NewtonBackwardsData();
 
-    public static GaussGreaterThanA gaussGreaterThanA = new GaussGreaterThanA();
-    public static GaussLesserThanA gaussLesserThanA = new GaussLesserThanA();
+/*    public static GaussGreaterThanA gaussGreaterThanA = new GaussGreaterThanA();
+    public static GaussLesserThanA gaussLesserThanA = new GaussLesserThanA();*/
 
     @Override
     public void start(Stage stage) throws IOException {
